@@ -11,4 +11,4 @@ app.add_url_rule('/faceapp/gender','gender',views.gender,methods=['POST','GET'])
 #run
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()

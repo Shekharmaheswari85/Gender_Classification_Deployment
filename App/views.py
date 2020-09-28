@@ -6,6 +6,9 @@ from utility import utils
 
 UPLOAD_FOLDER='static/upload'
 
+def error():
+    return render_template('error.html')
+
 def base():
     return render_template('base.html')
 
@@ -34,3 +37,5 @@ def gender():
         text=utils.pipeline_model(path,filename,color='bgr')
         return render_template('gender.html',fileupload=True,img_name=filename,w=w,text=text)    
     return render_template('gender.html',fileupload=False,img_name="appicon.jpeg",w=300,text=None)
+
+
