@@ -1,10 +1,5 @@
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
 import pickle
-import sklearn
 import cv2 as cv
-from PIL import Image
 
 #loading model
 haar=cv.CascadeClassifier('./model/haarcascade_frontalface_default.xml')
@@ -12,7 +7,7 @@ haar=cv.CascadeClassifier('./model/haarcascade_frontalface_default.xml')
 mean=pickle.load(open('./model/mean_preprocess.pickle','rb'))
 model_svm=pickle.load(open('./model/model_svm.pickle','rb'))
 model_pca=pickle.load(open('./model/pca_50.pickle','rb'))
-print("Model loaded successfully")
+# print("Model loaded successfully")
 
 #settings
 gender_pre=['Male','Female']
@@ -48,10 +43,10 @@ def pipeline_model(path,filename,color='rgb'):
         results=model_svm.predict_proba(eigen_image)[0]
         #step - 10: 
         predict= results.argmax() # 0 or 1
-        score=results[predict ]
+        score=results[predict]
         #step - 11:
         text = "%s : %0.2f"%(gender_pre[predict],score)
-        print(text)
+        # print(text)
         cv.putText(img,text,(x,y),font,1,(255,255,0),2)
     cv.imwrite('./static/predict/{}'.format(filename),img)
     return text

@@ -1,5 +1,3 @@
 .vscode
 env
 __pycache__
-firebase.py
-serviceaccountkey.json

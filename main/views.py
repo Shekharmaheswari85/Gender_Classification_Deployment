@@ -1,5 +1,4 @@
 from flask import render_template,request
-from flask import url_for,redirect
 import os
 from PIL import Image
 from utility import utils 
@@ -18,6 +17,15 @@ def index():
 def faceapp():
     return render_template('faceapp.html')
 
+def delete(path):
+    filelist = [f for f in os.listdir(path) if f.endswith(".jpg")]
+    for f in filelist:
+        os.remove(os.path.join(path,f))
+
+def space_free():
+    delete("static/upload/")
+    delete("static/predict/")
+
 def getwidth(path):
     img=Image.open(path)
     size = img.size # width and height
@@ -27,6 +35,7 @@ def getwidth(path):
 
 def gender():
     if request.method=='POST':
+        space_free()
         f= request.files['image']
         filename=f.filename
         path=os.path.join(UPLOAD_FOLDER,filename)
