@@ -1,5 +1,6 @@
 import pickle
 import cv2 as cv
+import sklearn
 
 #loading model
 haar=cv.CascadeClassifier('./model/haarcascade_frontalface_default.xml')
