@@ -1,7 +1,7 @@
 FROM alpine:latest
 
 #install python and pip 
-RUN apk app --update python3 py3-pip bash
+RUN apk app python3 py3-pip bash
 ADD ./Gender_Classification_Deployment/requirements.txt /tmp/requirements.txt
 
 #install dependencies
