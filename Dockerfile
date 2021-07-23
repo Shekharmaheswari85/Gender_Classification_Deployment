@@ -1,4 +1,4 @@
-FROM python:3.7-slim-buster
+FROM python:3.7
 WORKDIR /Gender_Classification_Deployment
 COPY requirements.txt requirements.txt
 RUN pip3 install -r requirements.txt
